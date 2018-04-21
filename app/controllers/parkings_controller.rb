@@ -63,7 +63,24 @@ end
     render json: reservations
   end
 
+  def preview
+    start_at = Date.parse[params[:start_at]]
+    end_at = Date.parse[params[:end_at]]
+
+    output = {
+      conflict: is_conflict(start_at, end_at, @parking)
+    }
+
+    render json: output
+end
+
   private
+
+    def is_conflict(start_at, end_at, parking)
+      check = parking.reservations.where("? < start_at AND end_at < ?", start_at, end_at)
+      check.size > 0? true : false
+    end
+
     def set_parking
       @parking = Parking.find(params[:id])
     end

@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <span><i class="fa fa-bolt" style="color: #ffb400"></i> $<%= @parking.price %></span>
-    <span class="pull-right">Per Month</span>
+    <span class="pull-right">Per Day</span>
   </div>
   <div class="panel-body">
     <%= form_for([@parking, @parking.reservations.new]) do |f| %>
@@ -85,7 +85,7 @@
             }
 
             $.ajax({
-              url: '<%#= preview_parking_path(@parking) %>',
+              url: '<%= preview_parking_path(@parking) %>',
               data: input,
               success: function(data) {
 
