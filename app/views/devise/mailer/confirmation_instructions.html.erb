@@ -1,0 +1,9 @@
+<p>Welcome <%= @email %>!</p>
+
+<h3>Thank you so much for becoming a part of the ParkHere community!</h3>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<h2>Happy Parking!</h2>
