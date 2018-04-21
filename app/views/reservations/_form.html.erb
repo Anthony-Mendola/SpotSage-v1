@@ -56,7 +56,7 @@
     unavailableDates = [];
 
     $.ajax({
-      url: '<%#= preload_parking_path(@parking) %>',
+      url: '<%= preload_parking_path(@parking) %>',
       dateTyp: 'json',
       success: function(data) {
 

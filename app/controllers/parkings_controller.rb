@@ -56,6 +56,13 @@ end
     redirect_back(fallback_location: request.referer)
   end
 
+  def preload
+    today = Date.today
+    reservations = @parking.reservations.where("start_at >= ? OR end_at >= ?", today, today)
+
+    render json: reservations
+  end
+
   private
     def set_parking
       @parking = Parking.find(params[:id])
