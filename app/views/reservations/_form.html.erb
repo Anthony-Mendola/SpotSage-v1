@@ -25,7 +25,7 @@
               <td class="text-right">$<%= @parking.price %></td>
             </tr>
             <tr>
-              <td>Night(s)</td>
+              <td>Days(s)</td>
               <td class="text-right">x <span id="reservation_nights"></span></td>
             </tr>
             <tr>
@@ -124,6 +124,7 @@
               'start_at': start_at,
               'end_at': end_at
             }
+            
 
             $.ajax({
               url: '<%#= preview_parking_path(@parking) %>',
