@@ -64,3 +64,4 @@ gem 'paperclip'
 gem "font-awesome-rails"
 gem 'geocoder'
 gem 'jquery-ui-rails', '5.0.5'
+gem 'ransack'
