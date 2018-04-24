@@ -1,6 +1,6 @@
 <div id="main">
   <div id="left">
-    <!-- SEARCH PANEL -->
+    <!-- SEARCH -->
     <div class="row">
       <div class="col-md-offset-4 col-md-4">
         <button id="filter" class="btn btn-default" data-toggle="collapse" data-target="#collapsePanel">
@@ -33,10 +33,10 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <%= text_field_tag :start_date, params[:start_date], readonly: true, placeholder: "Start Date", class: "form-control datepicker" %>
+                  <%= text_field_tag :start_at, params[:start_at], readonly: true, placeholder: "Start Date", class: "form-control datepicker" %>
                 </div>
                 <div class="col-md-6">
-                  <%= text_field_tag :end_date, params[:end_date], readonly: true, placeholder: "End Date", class: "form-control datepicker" %>
+                  <%= text_field_tag :end_at, params[:end_at], readonly: true, placeholder: "End Date", class: "form-control datepicker" %>
                 </div>
               </div>
               <hr/>
@@ -102,7 +102,7 @@
       <br/>
 
       <div class="row" id="parking_listing">
-        <%= render partial: "parkings/parkings_list", locals: {parkings: @arrParkings} %>
+        <%#= render partial: "parkings/parkings_list", locals: {parkings: @arrParkings} %>
       </div>
 
     </div>
@@ -114,10 +114,10 @@
 
     <div id="map" style="width: 100%; height: 100%"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBskFfa97x9qlsGemgLp_SHIH7rkbYJau0"></script>
+    <script>l
         function initialize(parkings) {
-          var location = {lat: 44.5403, lng: -78.5463}
+          var location = {lat: 40.7128, lng: -74.0060}
 
           if (parkings.length > 0) {
             location = {lat: parkings[0].latitude, lng: parkings[0].longitude}
@@ -153,22 +153,22 @@
 
 
 <script>
-  $('#start_date').datepicker({
+  $('#start_at').datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: 0,
     maxDate: '3m',
     onSelect: function(selected) {
-      $('#end_date').datepicker("option", "minDate", selected);
-      $('#end_date').attr("disabled", false);
+      $('#end_at').datepicker("option", "minDate", selected);
+      $('#end_at').attr("disabled", false);
     }
   });
 
-  $('#end_date').datepicker({
+  $('#end_at').datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: 0,
     maxDate: '3m',
     onSelect: function(selected) {
-      $('#start_date').datepicker("option", "maxDate", selected);
+      $('#start_at').datepicker("option", "maxDate", selected);
     }
   });
 

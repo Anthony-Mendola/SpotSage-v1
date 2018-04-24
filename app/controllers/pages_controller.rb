@@ -3,39 +3,42 @@ class PagesController < ApplicationController
     @parkings = Parking.where(active: true).limit(3)
   end
 
+#used session to remember user's search criteria, so they don't have retype the loc again.
   def search
     if params[:search].present? && params[:search].strip != ""
       session[:loc_search] = params[:search]
     end
 
-
+    #displays all the parking spaces near the location search
     if session[:loc_search] && session[:loc_search] != ""
-      @parkings_address = parking.where(active: true).near(session[:loc_search], 5, order: 'distance')
+      @parkings_address = Parking.where(active: true).near(session[:loc_search], 2, order: 'distance')
     else
-      @parkings_address = Parking.where(active: true).all
+      @parkings_address = Parking.where(active: true).all #if no loc provided, displays all active listings
     end
 
+    #uses ransack gem to apply search filters to search
     @search = @parkings_address.ransack(params[:q])
     @parkings = @search.result
-
+    #turn to array
     @arrParkings = @parkings.to_a
 
-    if (params[:start_date] && params[:end_date] && !params[:start_date].empty? &&  !params[:end_date].empty?)
+    #time frame search
+    if (params[:start_at] && params[:end_at] && !params[:start_at].empty? && !params[:end_at].empty?)
 
-      start_date = Date.parse(params[:start_date])
-      end_date = Date.parse(params[:end_date])
+      start_at = Date.parse(params[:start_at])
+      end_at = Date.parse(params[:end_at])
 
       @parkings.each do |parking|
 
         not_available = parking.reservations.where(
-          "(? <= start_date AND start_date <= ?)
-          OR (? <= end_date AND end_date <= ?)
-          OR (start_date < ? AND ? < end_date)",
-          start_date, end_date,
-          start_date, end_date,
-          start_date, end_date
+          "(? <= start_at AND start_at <= ?)
+          OR (? <= end_at AND end_at <= ?)
+          OR (start_at < ? AND ? < end_at)",
+          start_at, end_at,
+          start_at, end_at,
+          start_at, end_at
         ).limit(1)
-
+        #if date not available, removes listing from array above.
         if not_available.length > 0
           @arrParkings.delete(parking)
         end

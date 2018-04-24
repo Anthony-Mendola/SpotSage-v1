@@ -10,10 +10,10 @@
       <%= text_field_tag :search, params[:search], placeholder: "Where do you want to park?", class: "form-control", id: "autolocation" %>
     </div>
     <div class="col-md-3">
-      <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control datepicker" %>
+      <%= text_field_tag :start_at, params[:start_at], placeholder: "Start Date", class: "form-control datepicker" %>
     </div>
     <div class="col-md-3">
-      <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control datepicker" %>
+      <%= text_field_tag :end_at, params[:end_at], placeholder: "End Date", class: "form-control datepicker" %>
     </div>
   </div>
   <br/><br/>
@@ -64,22 +64,22 @@
 
 
 <script>
-  $('#start_date').datepicker({
+  $('#start_at').datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: 0,
     maxDate: '3m',
     onSelect: function(selected) {
-      $('#end_date').datepicker("option", "minDate", selected);
-      $('#end_date').attr("disabled", false);
+      $('#end_at').datepicker("option", "minDate", selected);
+      $('#end_at').attr("disabled", false);
     }
   });
 
-  $('#end_date').datepicker({
+  $('#end_at').datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: 0,
     maxDate: '3m',
     onSelect: function(selected) {
-      $('#start_date').datepicker("option", "maxDate", selected);
+      $('#start_at').datepicker("option", "maxDate", selected);
     }
   });
 
