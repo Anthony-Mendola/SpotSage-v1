@@ -24,6 +24,7 @@ end
 
   def show
     @photos = @parking.photos
+    @guest_reviews = @parking.guest_reviews
   end
 
   def listing
