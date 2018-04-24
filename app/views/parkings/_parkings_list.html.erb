@@ -1,0 +1,22 @@
+<% parkings.each do |parking| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading preview">
+          <%= image_tag parking.cover_photo(:medium) %>
+        </div>
+        <div class="panel-body">
+          <%= link_to parking.listing_name, parking %><br/>
+          $<%= parking.price %> - <%= parking.space_type %> - <%= pluralize(parking.spaces, "Spaces") %>
+          <div id="star_<%= parking.id %>"></div> <%= pluralize(parking.average_rating, "review") %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $('#star_<%= parking.id %>').raty({
+        path: '/assets',
+        readOnly: true,
+        score: <%= parking.average_rating %>
+      });
+    </script>
+<% end %>

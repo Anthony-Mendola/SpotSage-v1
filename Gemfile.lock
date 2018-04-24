@@ -803,7 +803,7 @@ DEPENDENCIES
   paperclip
   puma (~> 3.7)
   rails (~> 5.1.5)
-  ransack
+  ransack (~> 1.7)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

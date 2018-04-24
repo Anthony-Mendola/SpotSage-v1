@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 
     #displays all the parking spaces near the location search
     if session[:loc_search] && session[:loc_search] != ""
-      @parkings_address = Parking.where(active: true).near(session[:loc_search], 2, order: 'distance')
+      @parkings_address = Parking.where(active: true).near(session[:loc_search], 5, order: 'distance')
     else
       @parkings_address = Parking.where(active: true).all #if no loc provided, displays all active listings
     end
