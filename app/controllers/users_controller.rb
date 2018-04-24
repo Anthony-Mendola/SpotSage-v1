@@ -7,6 +7,6 @@ class UsersController < ApplicationController
     @guest_reviews = Review.where(type: "GuestReview", host_id: @user.id)
 
     #shows all the host reviews if the user is a guest
-    @guest_reviews = Review.where(type: "HostReview", guest_id: @user.id)
+    @host_reviews = Review.where(type: "HostReview", guest_id: @user.id)
   end
 end
