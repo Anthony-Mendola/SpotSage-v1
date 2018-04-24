@@ -198,5 +198,9 @@
 </div>
 
 <script>
-
+$('#average_rating').raty({
+  path: '/assets',
+  readOnly: true,
+  score: <%= @parking.average_rating %>
+});
 </script>
