@@ -1,5 +1,7 @@
-<div class="row">
-  <div class="col-md-7 banner">
+<div class="intro-header" id="home-header">
+<div class="container">
+  <div class="row">
+    <div class="site-heading">
     <h1><span class="text-red">SpotSage</br></span>Reserve a parking space anywhere you go!</h1>
   </div>
 </div>
@@ -24,7 +26,9 @@
     </div>
   </div>
 <% end %>
-
+<br>
+</div>
+</div>
 <br/><hr/><br/>
 
 <!-- Spaces -->
@@ -69,7 +73,8 @@
     <br/>
   </div>
 </div>
-
+<br>
+<%= render 'static/footer' %>
 
 <script>
   $('#start_at').datepicker({
