@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @parkings = Parking.where(active: true).limit(3)
+    @parkings = Parking.where(active: true).limit(3).recent
   end
 
 #used session to remember user's search criteria, so they don't have retype the loc again.

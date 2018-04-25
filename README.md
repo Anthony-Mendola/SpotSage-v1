@@ -54,8 +54,9 @@ $.ajax({
  ````
 ## Issue 2 that was overcome
 
-Used AJAX & JSON to improve the google maps and filter search feature so that the page doesn't need to be reloaded for results. 
+Used AJAX & JSON to improve the google maps and filter search feature so that the page doesn't need to be reloaded for results.
 
 ## What's next for the app?
 
 Adding time limits to reservations
+Messaging

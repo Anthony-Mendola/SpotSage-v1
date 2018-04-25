@@ -14,6 +14,8 @@ class Parking < ApplicationRecord
   validates :spaces, presence: true
   validates :accessibility, presence: true
 
+  scope :recent, -> {order("parkings.updated_at DESC")}
+
   def cover_photo(size)
       if self.photos.length > 0
         self.photos[0].image.url(size)
