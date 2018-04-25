@@ -40,3 +40,6 @@
   <%= f.hidden_field :active, value: true %>
   <%= f.submit "Publish", id: "publish_button", class: "btn btn-normal btn-block", disabled: !is_ready %>
 <% end %>
+  <div class="btn btn-form btn-small">
+<%= link_to "Delete", @parking, method: :delete, data: { confirm: "Are you sure you want to delete this listing?"}, class: "btn btn-form" %>
+</div>

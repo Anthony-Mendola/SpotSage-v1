@@ -1,7 +1,7 @@
 class ParkingsController < ApplicationController
   before_action :set_parking, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show]
-  before_action :is_authorised, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update]
+  before_action :is_authorized, only: [:listing, :pricing, :description, :photo_upload, :amenities, :location, :update, :destroy]
 
 
   def index
@@ -57,6 +57,12 @@ end
     redirect_back(fallback_location: request.referer)
   end
 
+  def destroy
+  @parking.destroy
+  flash[:notice] = "Successfully deleted that listing"
+  redirect_to parkings_path
+end
+
   def preload
     today = Date.today
     reservations = @parking.reservations.where("start_at >= ? OR end_at >= ?", today, today)
@@ -95,7 +101,7 @@ end
       :listing_name, :summary, :address, :is_electric, :is_water, :is_heating, :price, :active)
     end
 
-    def is_authorised
+    def is_authorized
       redirect_to root_path, alert: "You don't have permission" unless current_user.id == @parking.user_id
     end
 end
