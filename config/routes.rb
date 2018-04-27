@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get 'search' => 'pages#search'
 
+  get '/notifications' => 'notifications#index'
+
   mount ActionCable.server => '/cable'
-  
+
 end
