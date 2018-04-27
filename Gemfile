@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+ruby "~> 2.3.3"
 gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
@@ -65,3 +66,4 @@ gem "font-awesome-rails"
 gem 'geocoder', '~> 1.4'
 gem 'jquery-ui-rails', '5.0.5'
 gem 'ransack', '~> 1.7'
+gem 'redis', '~> 4.0.1'
