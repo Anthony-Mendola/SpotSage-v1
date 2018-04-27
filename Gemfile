@@ -60,7 +60,7 @@ gem 'toastr-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'aws-sdk', '~> 2.8'
-gem 'paperclip'
+gem 'paperclip', '~> 5.2.0'
 gem "font-awesome-rails"
 gem 'geocoder', '~> 1.4'
 gem 'jquery-ui-rails', '5.0.5'
