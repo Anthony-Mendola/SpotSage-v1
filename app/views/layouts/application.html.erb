@@ -3,6 +3,7 @@
   <head>
     <title>SpotSage</title>
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBskFfa97x9qlsGemgLp_SHIH7rkbYJau0&libraries=places"></script>
@@ -18,7 +19,7 @@
 
     <%= render 'static/navbar' %>
     <%= render 'static/message' %>
-    
+
 
 
     <div class="container">

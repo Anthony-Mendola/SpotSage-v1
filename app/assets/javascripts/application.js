@@ -16,4 +16,5 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
 //= require toastr
+//= require cable
 //= require_tree .
