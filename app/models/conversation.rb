@@ -11,7 +11,7 @@ class Conversation < ApplicationRecord
   }
 
 #checks if there is a conversation existing between 2 users
-  scope :between -> (user_A, user_B) {
+  scope :between, -> (user_A, user_B) {
     where("(conversations.sender_id = ? OR conversations.recipient_id = ?) OR conversations.sender_id = ? OR conversations.recipient_id = ?", user_A, user_B, user_B, user_A)
   }
 end
