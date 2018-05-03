@@ -1,10 +1,12 @@
 development:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379/1
+
 
 test:
   adapter: async
 
 production:
   adapter: redis
-  url: ENV['REDIS_URL']
+  url: <%= ENV['REDIS_URL'] %>
   channel_prefix: SpotSage-v1_0_production
