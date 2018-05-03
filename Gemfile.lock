@@ -287,7 +287,6 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.5)
   ransack (~> 1.7)
-  redis (~> 4.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
