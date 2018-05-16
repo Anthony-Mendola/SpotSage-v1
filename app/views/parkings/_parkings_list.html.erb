@@ -7,7 +7,7 @@
         <div class="panel-body">
           <%= link_to parking.listing_name, parking %><br/>
           $<%= parking.price %> - <%= parking.space_type %> - <%= pluralize(parking.spaces, "Space") %>
-          <div id="star_<%= parking.id %>"></div> <%= pluralize(parking.average_rating, "review") %>
+          <div id="star_<%= parking.id %>"></div> <%= pluralize(parking.average_rating, "star") %>
         </div>
       </div>
     </div>
