@@ -10,35 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427154907) do
+ActiveRecord::Schema.define(version: 20180421044024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "context"
-    t.bigint "user_id"
-    t.bigint "conversation_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.string "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
 
   create_table "parkings", force: :cascade do |t|
     t.string "space_type"
@@ -86,22 +61,6 @@ ActiveRecord::Schema.define(version: 20180427154907) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.text "comment"
-    t.integer "star", default: 1
-    t.bigint "parking_id"
-    t.bigint "reservation_id"
-    t.bigint "guest_id"
-    t.bigint "host_id"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["guest_id"], name: "index_reviews_on_guest_id"
-    t.index ["host_id"], name: "index_reviews_on_host_id"
-    t.index ["parking_id"], name: "index_reviews_on_parking_id"
-    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -124,21 +83,13 @@ ActiveRecord::Schema.define(version: 20180427154907) do
     t.string "image"
     t.string "phone_number"
     t.text "description"
-    t.integer "unread", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
-  add_foreign_key "notifications", "users"
   add_foreign_key "parkings", "users"
   add_foreign_key "photos", "parkings"
   add_foreign_key "reservations", "parkings"
   add_foreign_key "reservations", "users"
-  add_foreign_key "reviews", "parkings"
-  add_foreign_key "reviews", "reservations"
-  add_foreign_key "reviews", "users", column: "guest_id"
-  add_foreign_key "reviews", "users", column: "host_id"
 end

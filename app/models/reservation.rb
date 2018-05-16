@@ -2,7 +2,6 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :parking
 
-  after_create_commit :create_notification
 
   private
 
