@@ -1,6 +1,15 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.paperclip_defaults = {
+    storage: :s3,
+    path: ':class/:attachment/:id/:style/:filename',
+    s3_credentials: {
+      bucket: ENV.fetch('spot-sage'),
+      access_key_id: ENV.fetch('ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('SECRET_ACCESS_KEY'),
+      s3_region: ENV.fetch('AWS_REGION')
+    }
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -101,16 +110,5 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.paperclip_defaults = {
-    storage: :s3,
-    path: ':class/:attachment/:id/:style/:filename',
-    s3_host_name: 's3-us-east-1.amazonaws.com',
-    s3_credentials: {
-      bucket: 'spot-sage',
-      access_key_id: 'ACCESS_KEY_ID',
-      secret_access_key: 'SECRET_ACCESS_KEY',
-      s3_region: 'us-east-1'
-    }
-  }
   config.active_record.dump_schema_after_migration = false
 end
