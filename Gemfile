@@ -60,7 +60,7 @@ gem 'devise'
 gem 'toastr-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'aws-sdk', '~> 2.8'
+gem 'aws-sdk', '~> 2.11', '>= 2.11.39'
 gem 'paperclip', '~> 5.2.0'
 gem "font-awesome-rails"
 gem 'geocoder', '~> 1.4'
