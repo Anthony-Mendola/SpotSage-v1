@@ -59,7 +59,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'toastr-rails'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '>= 6.0.0'
 gem 'aws-sdk', '~> 2.8'
 gem 'paperclip', '~> 5.2.0'
 gem "font-awesome-rails"
